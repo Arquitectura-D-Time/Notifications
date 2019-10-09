@@ -1,0 +1,17 @@
+mongo:
+  image: mongo
+  restart: always
+  hostname: mongo
+  command: mongod --port 3004
+  volumes: 
+    - database:/data/db
+  ports:
+    - "3004:3004"
+app:
+  build: .
+  dockerfile: docker/Dockerfile
+  hostname: app
+  ports:
+    - "5004:8080"
+  links:
+    - mongo
