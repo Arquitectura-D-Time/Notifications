@@ -1,0 +1,283 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for enseniamela notifications
+  description: Spring boot + Mongodb
+  license:
+    name: Software Architecture, 2019-II
+host: localhost:5004
+basePath: /notifications/
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /create:
+    post:
+      summary: Creates a new notification
+      operationId: createNotification
+      parameters:
+        - name: notification
+          in: body
+          required: true
+          description: Notification Object
+          schema:
+            $ref: '#/definitions/Notification'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Notification'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Notification'
+  /all:
+    get:
+      summary: Returns all the notifications
+      operationId: getAllNotifications
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+  /{id}:
+    get:
+      summary: Returns the notification whit that id
+      operationId: getNotificationById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+    put:
+      summary: update the notification whit that id
+      operationId: modifyNotificationById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be updated
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+    delete:
+      summary: delete the notification whit that id
+      operationId: deleteNotification
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+  /toUser/{id}:
+    get:
+      summary: Returns the notification whit that toUserid
+      operationId: getByToUser
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+  /fromUser/{id}:
+    get:
+      summary: Returns the notification whit that fromUserid
+      operationId: getByFromUser
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Notification'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Notification'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/Notification'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Notification'
+  /toUserAndStatus/{toUserId}/{status}:
+      get:
+        summary: Returns the notification whit that fromUserid and status
+        operationId: findByToUserIdAndStatus
+        parameters:
+          - name: toUserId
+            in: path
+            description: The toUserId of the user to be returned
+            required: true
+            type: string
+          - name: status
+            in: path
+            description: The status of the notification to be returned
+            required: true
+            type: string
+        responses:
+          '200':
+            description: Ok
+            schema:
+              $ref: '#/definitions/Notification'
+          '404':
+            description: Not Found
+            schema:
+              $ref: '#/definitions/Notification'
+          '406':
+              description: Not Acceptable (Invalid Params)
+              schema:
+                $ref: '#/definitions/Notification'
+          '500':
+            description: unexpected error
+            schema:
+              $ref: '#/definitions/Notification'
+  /fromUserAndStatus/{fromUserId}/{status}:
+      get:
+        summary: Returns the notification whit that fromUserId and status
+        operationId: findByFromUserIdAndStatus
+        parameters:
+          - name: fromUserId
+            in: path
+            description: The fromUserId of the user to be returned
+            required: true
+            type: string
+          - name: status
+            in: path
+            description: The status of the notification to be returned
+            required: true
+            type: string
+        responses:
+          '200':
+            description: Ok
+            schema:
+              $ref: '#/definitions/Notification'
+          '404':
+            description: Not Found
+            schema:
+              $ref: '#/definitions/Notification'
+          '406':
+              description: Not Acceptable (Invalid Params)
+              schema:
+                $ref: '#/definitions/Notification'
+          '500':
+            description: unexpected error
+            schema:
+              $ref: '#/definitions/Notification'
+definitions:
+  # Notifications
+  Notification:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: string
+      description:
+        type: string
+      toUserId:
+        type: string
+      fromUserId:
+        type: string
+      creationDate:
+        type: string
+      status:
+        type: string

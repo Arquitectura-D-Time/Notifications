@@ -16,6 +16,14 @@ public class NotificationController {
     @Autowired
     private NotificationRepository repository;
 
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Notification createNotification(@Valid @RequestBody Notification pets) {
+        pets.set_id(ObjectId.get());
+        repository.save(pets);
+        return pets;
+    }
+
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Notification> getAllNotifications() {
         System.out.println("Hola prros");
@@ -31,13 +39,6 @@ public class NotificationController {
     public void modifyNotificationById(@PathVariable("id") ObjectId id, @Valid @RequestBody Notification pets) {
         pets.set_id(id);
         repository.save(pets);
-    }
-
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Notification createNotification(@Valid @RequestBody Notification pets) {
-        pets.set_id(ObjectId.get());
-        repository.save(pets);
-        return pets;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
