@@ -1,4 +1,4 @@
-package com.architectured.notificationss.filters;
+package com.architectured.notifications.filters;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
