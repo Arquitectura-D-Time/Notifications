@@ -1,4 +1,4 @@
-package com.architectured.notifications;
+package com.architectured.notifications.config;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-public class Filter {
+public class FilterBeansConfiguration {
 
 
     public static final int CORS_FILTER_ORDER = 0;
