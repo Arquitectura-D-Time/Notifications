@@ -9,7 +9,7 @@ mongo:
     - "3004:3004"
 app:
   build: .
-  dockerfile: docker/Dockerfile
+  dockerfile: Dockerfile
   hostname: app
   ports:
     - "5004:8080"
