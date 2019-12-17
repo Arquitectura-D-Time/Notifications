@@ -1,0 +1,6 @@
+com/architectured/notifications/config/MongoConfig.class
+com/architectured/notifications/config/FilterBeansConfiguration.class
+com/architectured/notifications/repositiories/NotificationRepository.class
+com/architectured/notifications/controllers/NotificationController.class
+com/architectured/notifications/models/Notification.class
+com/architectured/notifications/NotificationsApplication.class
